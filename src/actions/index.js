@@ -5,10 +5,23 @@ const fetchPosts = () => {
     const response = await jsonplaceholder.get('/posts');
     const action = {
       type: 'FETCH_POSTS',
-      payload: response,
+      payload: response.data,
     };
     dispatch(action);
   }
 };
 
-export { fetchPosts };
+const fetchUser = (id) => {
+  return async (dispatch) => {
+    const response = await jsonplaceholder.get(`/users/${id}`);
+    const action = {
+      type: 'FETCH_USER',
+      payload: response.data,
+    };
+    dispatch(action);
+  }
+};
+
+
+
+export { fetchPosts, fetchUser };

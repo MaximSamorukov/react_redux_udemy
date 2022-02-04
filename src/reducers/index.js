@@ -1,10 +1,9 @@
 import { combineReducers } from "redux";
+import { posts } from "./posts_reducer";
+import { usersReducer } from "./users_reducer";
 
-const posts = (store = [], action) => {
-  return {
-    ...store,
-    posts: action.payload?.data || [],
-  };
-};
 
-export default combineReducers({ posts });
+export default combineReducers({
+  posts,
+  users: usersReducer
+});
